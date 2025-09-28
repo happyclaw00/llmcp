@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLMCP DOM Control</title>
+    <style>
+        body { width: 450px; padding: 20px; font-family: Arial, sans-serif; }
+        .section { margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { width: 100%; margin: 5px 0; padding: 8px; }
+        .small-btn { width: 48%; display: inline-block; margin: 1%; }
+        .medium-btn { width: 32%; display: inline-block; margin: 0.5%; }
+        input, textarea { width: 100%; margin: 5px 0; padding: 5px; box-sizing: border-box; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        #output { max-height: 200px; overflow-y: auto; font-size: 11px; }
+        .highlight { background-color: #ffeb3b; }
+        h3 { margin: 5px 0; }
+        .input-group { display: flex; gap: 5px; }
+        .input-group input { flex: 1; }
+        .input-group button { width: auto; white-space: nowrap; }
+        .click-info { background-color: #e8f5e8; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <h2>LLMCP DOM Controller</h2>
+    
+    <div id="serverStatus" class="status info">
+        Checking server status...
+    </div>
+    
+    <!-- Click Tracking Controls -->
+    <div class="section">
+        <h3>Click Tracking</h3>
+        <div>
+            <button id="getLastClickLocation" class="small-btn">Get Last Click Location</button>
+            <button id="getLastClickElement" class="small-btn">Get Last Click Element</button>
+        </div>
+        <div id="clickInfo" class="click-info" style="display:none;">
+            <strong>Latest Click Info:</strong>
+            <div id="clickDetails"></div>
+        </div>
+        <button id="clearClickInfo" style="display:none;">Clear Click Info</button>
+    </div>
+    
+    <!-- DOM Operation Controls -->
+    <div class="section">
+        <h3>DOM Operations</h3>
+        
+        <div>
+            <input type="text" id="selectorInput" placeholder="CSS Selector (e.g., #myButton)" />
+        </div>
+        
+        <div>
+            <button id="clickElement" class="medium-btn">Click Element</button>
+            <button id="getElementText" class="medium-btn">Get Text</button>
+            <button id="getPageInfo" class="medium-btn">Page Info</button>
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="textInput" placeholder="Text to input" />
+            <button id="inputText">Input Text</button>
+        </div>
+        
+        <div class="input-group">
+            <input type="text" id="keyInput" placeholder="Key (enter, tab, escape, a, f5)" />
+            <button id="sendKey">Send Key</button>
+        </div>
+    </div>
+    
+    <!-- Screenshot Controls -->
+    <div class="section">
+        <h3>Screenshot</h3>
+        
+        <div class="input-group">
+            <input type="text" id="biasInput" placeholder="Bias: x,y,width,height (e.g., -10,-10,20,20)" />
+            <button id="takeScreenshot">Screenshot Element</button>
+        </div>
+        
+        <button id="downloadScreenshot" style="display:none;">Download Last Screenshot</button>
+    </div>
+    
+    <!-- Quick Tests -->
+    <div class="section">
+        <h3>Quick Tests</h3>
+        <div>
+            <button id="testGoogle" class="small-btn">Test Google</button>
+            <button id="testGithub" class="small-btn">Test GitHub</button>
+        </div>
+        <div>
+            <button id="testCommon" class="small-btn">Test Common</button>
+            <button id="testKeys" class="small-btn">Test Keys</button>
+        </div>
+        <button id="testClickTracking">Test Click Tracking</button>
+    </div>
+    
+    <!-- Server Tests -->
+    <div class="section">
+        <h3>Server Tests</h3>
+        <div>
+            <button id="testStatus" class="medium-btn">Status</button>
+            <button id="testPing" class="medium-btn">Ping</button>
+            <button id="testCommand" class="medium-btn">Command</button>
+        </div>
+    </div>
+    
+    <h3>Output Log:</h3>
+    <div id="output"></div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

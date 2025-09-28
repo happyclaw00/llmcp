@@ -1,0 +1,23 @@
+
+{
+  "manifest_version": 3,
+  "name": "llmcp",
+  "version": "1.0",
+  "description": "LLMCP Chrome Extension with WebSocket Communication",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": [
+      "ws://localhost:11808/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
