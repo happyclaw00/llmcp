@@ -4,12 +4,13 @@
   "name": "llmcp",
   "version": "1.0",
   "description": "LLMCP Chrome Extension with WebSocket Communication",
-  "permissions": ["scripting", "activeTab", "tabs"],
+  "permissions": ["scripting", "activeTab", "tabs", "alarms"],
   "host_permissions": [
-      "ws://localhost:11808/*"
+      "ws://localhost:11808/*",
+      "http://localhost:11808/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "page": "background.html"
   },
   "content_scripts": [
     {

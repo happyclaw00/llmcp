@@ -21,6 +21,13 @@ class WebSocketClient {
         this.isConnected = true;
         this.reconnectAttempts = 0;
         
+        // 发送连接消息，方便调试
+        this.sendMessage({ 
+          type: 'extension_connected', 
+          version: '1.0',
+          timestamp: new Date().toISOString() 
+        });
+        
         // 发送排队的消息
         this.flushMessageQueue();
       };
